@@ -1,1 +1,1 @@
-web: python manage.py makemigrations && python manage.py migrate && gunicorn mysite.wsgi
+web: python manage.py makemigrations && python manage.py migrate && daphne mysite.asgi:application

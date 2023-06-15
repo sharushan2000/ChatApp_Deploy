@@ -17,7 +17,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =env('DJANGO_DEBUG')
+DEBUG=True
+
+
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "close-circle.up.railway.app"] 
 CSRF_TRUSTED_ORIGINS = ['https://close-circle.up.railway.app']
 
@@ -74,13 +76,24 @@ ASGI_APPLICATION = 'mysite.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DJANGO_DB_NAME'),
+        'USER':env('DJANGO_DB_USERNAME'),
+        'PASSWORD':env('DJANGO_DB_PASSWORD'),
+        'HOST': env('DJANGO_DB_HOST'),
+        'PORT':env('DJANGO_DB_PORT'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -147,7 +160,7 @@ PASSWORD_HASHERS = [
 ]
 
 
-LOGIN_URL='rooms/index/'
+LOGIN_URL = 'rooms/login/'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
