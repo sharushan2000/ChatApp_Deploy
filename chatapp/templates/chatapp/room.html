@@ -37,7 +37,7 @@
     const username = JSON.parse(document.getElementById('json-username').textContent)
     const chatSocket = new WebSocket(
         'ws://'
-        +"close-circle.up.railway.app"
+        +window.location.host
         +'/ws/'
         +chatRoomName
         +'/'
