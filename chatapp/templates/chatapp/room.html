@@ -23,6 +23,7 @@
   
     <div class="form-container fixed inset-x-0 bottom-0 bg-green-900 p-2 justify-center items-center ">
       <form method="post" class="flex">
+        {% csrf_token %}
         <input class="rounded-md px-4 py-2 mr-2 bg-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none" id="message-input" type="text" name="message" placeholder="Enter message">
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none" id="send-button" type="submit">Send</button>
       </form>
