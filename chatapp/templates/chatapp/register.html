@@ -1,0 +1,75 @@
+{% extends 'chatapp/base.html' %}
+
+{% block body %}
+    <div class="flex justify-center mt-8">
+        <div class="w-1/2">
+            <form enctype="multipart/form-data" method="post" class="bg-white p-4 rounded-lg shadow-md shadow-blue">
+                {% csrf_token %}
+                
+                <div class="mb-4">
+                    <label for="id_username" class="block text-gray-700 text-sm font-bold mb-2">First Name</label>
+                    {{ user_form.first_name }}
+                </div>
+                <div class="mb-4">
+                    <label for="id_username" class="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
+                    {{ user_form.last_name }}
+                </div>
+                
+                <div class="mb-4">
+                    <label for="id_username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                    {{ user_form.username }}
+                </div>
+                
+                <div class="mb-4">
+                    <label for="id_email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    {{ user_form.email }}
+                </div>
+                
+                <div class="mb-4 flex">
+                    <div class="w-1/2 mr-2">
+                        <label for="id_password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                        {{ user_form.password }}
+                    </div>
+                </div>
+                
+                <div class="w-2/3 ml-2">
+                    <label for="id_bio" class="block text-gray-700 text-sm font-bold mb-2">Bio</label>
+                    {{ profile_form.bio }}
+                </div>
+                
+                <div class="mb-4">
+                    <label for="id_avatar" class="block text-gray-700 text-sm font-bold mb-2">Profile Picture</label>
+                    {{ profile_form.avatar }}
+                </div>
+                
+                <div class="flex justify-center">
+                    <input type="submit" name="submit" value="Register" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <style>
+        /* Add blue shadow to form */
+        .shadow-blue {
+            box-shadow: 0 0 10px blue;
+        }
+        
+        /* Add border and padding to input areas */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            border: 1px solid #ccc;
+            padding: 6px;
+            width: 100%;
+        }
+        
+        /* Add specific styles to id_bio textarea */
+        .id_bio {
+            width: 150%;
+            border: 1px solid #ccc;
+            padding: 6px;
+        }
+    </style>
+{% endblock %}

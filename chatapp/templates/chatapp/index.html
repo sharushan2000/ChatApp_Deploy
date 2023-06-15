@@ -1,11 +1,46 @@
 {% extends 'chatapp/base.html' %}
 
-
 {% block body %}
-    <h1>List of chatrooms</h1>
-    {% for chatroom in chatrooms %}
-        <a href="{% url 'chatroom' chatroom.slug %}">{{chatroom.name}}</a>
-        <br>
-    {% endfor %}
+    <div class="flex justify-center">
+        <div class="w-1/2">
+            <h1 class="text-3xl font-bold mb-4 text-center">List of Chatrooms</h1>
 
-{% endblock%}
+
+
+
+                    
+         
+         
+            <form method="GET" action="{% url 'index' %}" class="mb-4 flex">
+                <div class="flex">
+                    <input type="text" name="query" class="w-full px-14 py-2 border border-gray-300 rounded-l-md" placeholder="Search Chatrooms">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md">Search</button>
+                </div>
+            </form>
+
+
+
+
+
+            <table class="w-full bg-white border border-gray-200 shadow-md">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 bg-gray-200 text-gray-800 font-bold text-center">Chatroom Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chatroom in chatrooms %}
+                        <tr>
+                            <td class="py-2 px-4 border-b border-gray-200 text-center">
+                                <a href="{% url 'chatroom' chatroom.slug %}" class="text-blue-500 hover:text-blue-700">
+                                    {{ chatroom.name }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
